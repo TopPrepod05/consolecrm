@@ -1,4 +1,5 @@
-﻿using ConsoleApp4.Repositories;
+﻿using ConsoleApp4.Models;
+using ConsoleApp4.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -24,6 +25,8 @@ public class CrmService
         await _clientRepository.SaveAsync();
         Console.WriteLine($"Клиент {name} был добавлен!");
     }
+
+    //public List<Order> GetOrders(int clientId) => _orderRepository.GetOrdersByClient(clientId);
 
     public List<Client> GetAllClients() => _clientRepository.GetAll();
     

@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConsoleApp4.Repositories;
 
-public abstract class BaseRepository<T>
+public abstract class BaseRepository<T> : IRepository<T> where T : class
 {
     protected string _filename = string.Empty;
     protected List<T> _items = [];
@@ -37,4 +37,6 @@ public abstract class BaseRepository<T>
     }
 
     public List<T> GetAll() => _items;
+    public void Add(T item) => _items.Add(item);
+    public abstract T? GetById(int id);
 }

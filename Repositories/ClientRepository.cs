@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp4.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -17,5 +18,5 @@ public class ClientRepository : BaseRepository<Client>
         _items.Add(client);
     }
 
-    public Client? GetById(int id) => _items.FirstOrDefault(c => c.Id == id);
+    public override Client? GetById(int id) => _items.FirstOrDefault(c => c.Id == id);
 }

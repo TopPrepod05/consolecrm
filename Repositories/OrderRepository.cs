@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConsoleApp4.Models;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -18,5 +19,7 @@ public class OrderRepository : BaseRepository<Order>
         _items.Add(order);
     }
 
-    public Order? GetById(int id) => _items.FirstOrDefault(c => c.Id == id);
+    public override Order? GetById(int id) => _items.FirstOrDefault(c => c.Id == id);
+    public List<Order> GetOrdersByClient(int clientId) => 
+        _items.Where(c => c.ClientId == clientId).ToList();
 }
