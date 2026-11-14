@@ -8,15 +8,16 @@ namespace ConsoleApp4.Services;
 
 public class CrmService
 {
-    private ClientRepository _clientRepository;
-    private OrderRepository _orderRepository;
+    private IClientRepository _clientRepository;
+    private IOrderRepository _orderRepository;
+    public event Action<Client>? ClientAdded;
 
-    public static CrmService Instance { get; private set; } = new();
+    public static CrmService Instance { get; private set; } = new(new ClientRepository("client.json"), new OrderRepository("order.json"));
 
-    private CrmService()
+    private CrmService(IClientRepository clientRepository, IOrderRepository orderRepository)
     {
-        _clientRepository = new("clients.json");
-        _orderRepository = new("orders.json");
+        _clientRepository = clientRepository;
+        _orderRepository = orderRepository;
     }
 
     public async Task AddClientAsync(string name, string email)

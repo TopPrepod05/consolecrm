@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConsoleApp4.Repositories;
 
-public class ClientRepository : BaseRepository<Client>
+public class ClientRepository : BaseRepository<Client>, IClientRepository
 {
     public ClientRepository(string filename) : base(filename)
     {

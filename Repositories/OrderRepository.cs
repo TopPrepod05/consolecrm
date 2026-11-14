@@ -5,7 +5,7 @@ using System.Text;
 
 namespace ConsoleApp4.Repositories;
 
-public class OrderRepository : BaseRepository<Order>
+public class OrderRepository : BaseRepository<Order>, IOrderRepository
 {
     public OrderRepository(string filename) : base(filename)
     {
