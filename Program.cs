@@ -1,11 +1,8 @@
 ﻿using ConsoleApp4;
-using ConsoleApp4.Repositories;
+using ConsoleApp4.Services;
 
-var clientRep = new ClientRepository("client.json");
+var crmService = CrmService.Instance;
 
+var consoleUI = new ConsoleUI(crmService);
 
-clientRep.Add("kasum228", "kasum@max.ru");
-
-var cl = clientRep.GetById(1);
-
-Console.WriteLine($"{cl?.Id} {cl?.Name} {cl?.Email}");
+await consoleUI.Run();
